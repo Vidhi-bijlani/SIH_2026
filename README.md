@@ -38,8 +38,10 @@ streamlit run app.py
 
 ###🔒 Proprietary Note
 Core detection algorithms, risk weighting logic and ML models are part of Team CompilerCrew's proprietary research. This repo contains deployment version for demonstration purpose.
+
 Developed by Team CompilerCrew | Jalgaon, Maharashtra
-CompilerCrew ![Our Team](./CompilerCrew/group_logo.png)
+
+### CompilerCrew ![Our Team](./CompilerCrew/samples/group_logo.png)
 Bhavesh -> Team leader
 Vidhi
 Aishwarya
