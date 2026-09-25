@@ -191,6 +191,6 @@ if uploaded and len(uploaded)>=2:
         pdf.cell(200, 10, txt="BidSure-AI - GeM Compliance Report", ln=True, align='C'); pdf.set_font("Arial", '', 12)
         pdf.cell(200, 10, txt=f"Date: {datetime.now()} | Risk: {risk}/100", ln=True)
         pdf.multi_cell(0, 10, txt=f"Alerts: {', '.join(reasons)}\nCIBIL Scores: {cibil_scores}\nFiles: {[b['File'] for b in bidders]}")
-        return pdf.output(dest='S').encode('latin-1')
+        return bytes(pdf.output())
 
     st.download_button("📄 One-Click Evidence PDF", data=create_pdf(), file_name="BidSure_Evidence.pdf", mime="application/pdf", type="primary")
