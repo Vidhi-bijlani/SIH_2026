@@ -1,0 +1,12 @@
+streamlit
+PyMuPDF
+spacy
+scikit-learn
+shap
+networkx
+pyvis
+pandas
+mysql-connector-python
+matplotlib
+gTTS
+click>=8.4.2
