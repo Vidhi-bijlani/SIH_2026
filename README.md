@@ -33,6 +33,8 @@ em-shield-proto/
 ```bash
 pip install -r requirements.txt
 python -m spacy download en_core_web_sm
-streamlit run app.py🔒 Proprietary Note
+streamlit run app.py
+
+🔒 Proprietary Note
 Core detection algorithms, risk weighting logic and ML models are part of Team CompilerCrew's proprietary research. This repo contains deployment version for demonstration purpose.
 Developed by Team CompilerCrew | Jalgaon, Maharashtra
