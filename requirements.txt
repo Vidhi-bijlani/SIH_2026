@@ -1,0 +1,10 @@
+streamlit
+PyMuPDF
+spacy
+scikit-learn
+networkx
+pyvis
+pandas
+matplotlib
+gTTS
+fpdf2
