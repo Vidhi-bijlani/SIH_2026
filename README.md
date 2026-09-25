@@ -23,6 +23,12 @@ An end-to-end AI platform that automatically reads bidder documents to provide 1
 ### 🛠️ Tech Stack
 `Python | Streamlit | spaCy NLP | scikit-learn | PyMuPDF OCR | SHAP | NetworkX | PyVis | MySQL | React | gTTS`
 
+### 🔍 Verification Logic - Honest Prototype
+> **Note:** Due to restricted access to Govt APIs [NSDL, GSTIN] in prototype phase, we have implemented:
+> - **Offline Forensic Check:** Format validation [PAN: ABCDE1234F], date logic, sign/stamp keywords
+> - **Cross-Document Check:** PAN name vs GST name match, same PAN used by 2 bidders = Collusion Flag
+> - **Future Scope:** `verify_documents()` function is plug-and-play for live APIs in production.
+
 ### 📁 Project Structure
 em-shield-proto/
 ├── app.py               # Main application logic
@@ -35,9 +41,6 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_sm
 streamlit run app.py
 ```
-
-###🔒 Proprietary Note
-Core detection algorithms, risk weighting logic and ML models are part of Team CompilerCrew's proprietary research. This repo contains deployment version for demonstration purpose.
 
 Developed by Team CompilerCrew | Jalgaon, Maharashtra
 
