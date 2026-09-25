@@ -4,13 +4,13 @@
 > Government e-Marketplace (GeM) ke liye banaya gaya ek intelligent compliance engine.
 
 ### 🚀 Live Demo
-**Deployed on Streamlit Cloud:** [Link yahan ayega after deploy]
+**Deployed on Streamlit Cloud:** [Link will be added after deployment]
 
 ### 💡 Problem Statement
-GeM tenders me manual verification me bahut time lagta hai. Bidders same PAN / Mobile se multiple bids kar dete hain, sign/stamp missing hota hai, aur officers ko proof dikhana mushkil hota hai. Isse cartel formation aur fraud ka risk badhta hai.
+Manual verification of GeM tenders is highly time-consuming. Bidders often use the same PAN / Mobile to submit multiple bids, submit documents with missing signatures or stamps, and it becomes difficult for officers to find concrete proof. This increases the risk of cartel formation and procurement fraud.
 
 ### ✅ Our Solution - BidSure-AI
-Ek end-to-end AI platform jo bidder documents ko auto-read karke 10-point verification, risk scoring, collusion graph aur voice summary deta hai - officer friendly tareeke se.
+An end-to-end AI platform that automatically reads bidder documents to provide 10-point verification, intelligent risk scoring, interactive collusion graph, and bilingual voice summary - designed with an officer-first approach.
 
 ### ✨ Key Features
 - **1. Multi-Format Ingestion:** Scanned, Stamped & Signed PDF support with OCR
@@ -24,3 +24,15 @@ Ek end-to-end AI platform jo bidder documents ko auto-read karke 10-point verifi
 `Python | Streamlit | spaCy NLP | scikit-learn | PyMuPDF OCR | SHAP | NetworkX | PyVis | MySQL | React | gTTS`
 
 ### 📁 Project Structure
+em-shield-proto/
+├── app.py               # Main application logic
+├── requirements.txt     # Dependencies
+├── samples/             # Demo bidder documents
+└── README.mdjavascript
+### ⚙️ How to Run Locally
+```bash
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+streamlit run app.py🔒 Proprietary Note
+Core detection algorithms, risk weighting logic and ML models are part of Team CompilerCrew's proprietary research. This repo contains deployment version for demonstration purpose.
+Developed by Team CompilerCrew | Jalgaon, Maharashtra
