@@ -41,7 +41,8 @@ Core detection algorithms, risk weighting logic and ML models are part of Team C
 
 Developed by Team CompilerCrew | Jalgaon, Maharashtra
 
-### CompilerCrew ![Our Team](./CompilerCrew/group_logo.png)
+### 👥 CompilerCrew
+![Our Team](./group_logo.png)
 ### Bhavesh -> Team leader
 ### Vidhi
 ### Aishwarya
