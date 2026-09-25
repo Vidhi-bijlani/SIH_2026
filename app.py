@@ -30,7 +30,7 @@ nlp = load_nlp()
 st.markdown("<h1>🛡️ BidSure-AI: AI-Powered GeM Compliance Platform</h1>", unsafe_allow_html=True)
 st.caption("Tech Stack: Python | OCR | MySQL | scikit-learn | NetworkX | spaCy | gTTS")
 
-st.markdown("### 1 Tender Ingestion (PDF/DOCX/Scanned + Metadata)")
+st.markdown("### 1️⃣ Tender Ingestion (PDF/DOCX/Scanned + Metadata)")
 uploaded = st.file_uploader("Upload Bidder Documents (Min 2 PDFs for collusion check)", type=['pdf'], accept_multiple_files=True)
 st.caption("Standard: All documents must be scanned, stamped and signed PDF as per GeM ATC. Max 200MB per file.")
 
@@ -52,7 +52,7 @@ if uploaded and len(uploaded)>=2:
         mob = re.findall(r"[6-9]\d{9}", text)
         bidders.append({"File":f.name, "PAN":pan[0] if pan else "MISSING", "Mobile":mob[0] if mob else "MISSING", "Sign":img_c, "Text":text})
 
-    st.markdown("### 2 Document Intelligence (OCR, Layout, Clause Extraction) - 10-Doc AI Verification")
+    st.markdown("### 2️⃣ Document Intelligence (OCR, Layout, Clause Extraction) - 10-Doc AI Verification")
     doc_rules = {"PAN Card": ["pan"], "GST Cert": ["gst", "gstin"], "MSME/Udyam": ["msme", "udyam"], "ITR": ["itr", "income tax"], "Experience": ["experience", "work order"], "Turnover": ["turnover", "annual"], "Auth Letter": ["auth", "authorization"], "EMD": ["emd", "earnest"], "Make in India": ["make in india", "mii"], "Sign/Stamp": ["SIGN_CHECK"]}
     rows = []
     for b in bidders:
@@ -85,7 +85,7 @@ if uploaded and len(uploaded)>=2:
 
     c1,c2 = st.columns([1,1])
     with c1:
-        st.markdown("### 3 Compliance Engine & Risk Analysis")
+        st.markdown("### 3️⃣ Compliance Engine & Risk Analysis")
         if risk>60: st.error(f"🚨 ALERT: Potential Collusion Detected! | Risk Score: {risk}/100\nReasons: {', '.join(reasons)}")
         else: st.success(f"✅ LOW RISK | Score: {risk}/100")
 
@@ -111,7 +111,7 @@ if uploaded and len(uploaded)>=2:
         st.dataframe(heat_df.style.background_gradient(cmap='RdYlGn_r', vmin=0, vmax=100), use_container_width=True)
         st.caption("Officer View: Red = High Risk, Green = Normal")
 
-    st.markdown("### 4 Bidder Trust Graph + Explainable AI")
+    st.markdown("### 4️⃣ Bidder Trust Graph + Explainable AI")
     g1,g2 = st.columns([1.5,1])
     with g1:
         st.write("**Relationship Graph**")
@@ -135,7 +135,7 @@ if uploaded and len(uploaded)>=2:
             elif "Signature" in r: st.warning(f"{i+1}. Sign Missing: {r}\n\n👉 Document invalid.")
         st.code(f"Base=20%\n+PAN Same=+50%\n+Mobile Same=+30%\n+Sign Missing=+20%\nFinal={risk}/100", language="text")
 
-    st.markdown("### .5 CIBIL-like Trust Score (900 Score Model)")
+    st.markdown("### .5️⃣ CIBIL-like Trust Score (900 Score Model)")
     cibil_scores = []
     for idx, b in enumerate(bidders):
         score = 900
@@ -161,7 +161,7 @@ if uploaded and len(uploaded)>=2:
             else: st.error(f"**{b['File'][:10]}**\n\n### CIBIL: {s}/900\n🔴 Fraud Risk")
             st.progress(s/900)
 
-    st.markdown("### .6 3-Year Bidder History Analysis (SIH Requirement)")
+    st.markdown("### .6️⃣ 3-Year Bidder History Analysis (SIH Requirement)")
     st.caption("Analyzing past 3 years participation to detect shell bidders & collusion patterns")
 
     import random
@@ -199,11 +199,11 @@ if uploaded and len(uploaded)>=2:
         if total_part <= 1:
             st.warning(f"⚠️ {b['File']}: Only {total_part} tenders in 3 years - Possible Shell Company!")
 
-    st.markdown("### 7 Officer Dashboard - Final Evidence")
+    st.markdown("### 7️⃣ Officer Dashboard - Final Evidence")
     final_report = {"RiskScore": risk, "CIBIL_Scores": dict(zip([b['File'] for b in bidders], cibil_scores)), "Alerts": reasons, "Action": "Flag for Manual Review" if risk>60 else "Approve"}
     st.json(final_report)
 
-    st.markdown("### 8 Officer Voice Summary (English & Hindi)")
+    st.markdown("### 8️⃣ Officer Voice Summary (English & Hindi)")
     summary_en = f"Risk score is {risk} out of 100. "
     summary_hi = f"Jokhim score {risk} sau me se hai. "
     if risk>60:
@@ -225,10 +225,27 @@ if uploaded and len(uploaded)>=2:
             except: st.caption("Internet needed for voice")
 
     def create_pdf():
-        pdf = FPDF(); pdf.add_page(); pdf.set_font("Arial", 'B', 16)
-        pdf.cell(200, 10, txt="BidSure-AI - GeM Compliance Report", ln=True, align='C'); pdf.set_font("Arial", '', 12)
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", 'B', 16)
+        pdf.cell(200, 10, txt="BidSure-AI - GeM Compliance Report", ln=True, align='C')
+        pdf.set_font("Arial", '', 12)
         pdf.cell(200, 10, txt=f"Date: {datetime.now()} | Risk: {risk}/100", ln=True)
         pdf.multi_cell(0, 10, txt=f"Alerts: {', '.join(reasons)}\nCIBIL Scores: {cibil_scores}\nFiles: {[b['File'] for b in bidders]}")
-        return pdf.output(dest='S').encode('latin-1')
+        out = pdf.output(dest='S')
+        if isinstance(out, str):
+            return out.encode('latin-1')
+        return bytes(out)
 
-    st.download_button("📄 One-Click Evidence PDF", data=create_pdf(), file_name="BidSure_Evidence.pdf", mime="application/pdf", type="primary")
+    st.markdown("### 9️⃣ One-Click Evidence Report")
+    try:
+        pdf_bytes = create_pdf()
+        st.download_button(
+            label="📄 One-Click Evidence PDF Download Karo",
+            data=pdf_bytes,
+            file_name="BidSure_Evidence.pdf",
+            mime="application/pdf",
+            type="primary"
+        )
+    except Exception as e:
+        st.error(f"PDF Error: {e}")
