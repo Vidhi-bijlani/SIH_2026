@@ -8,3 +8,4 @@ pandas
 matplotlib
 gTTS
 fpdf2
+en-core-web-sm==3.8.0
