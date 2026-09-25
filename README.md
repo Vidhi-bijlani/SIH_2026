@@ -30,11 +30,13 @@ An end-to-end AI platform that automatically reads bidder documents to provide 1
 > - **Future Scope:** `verify_documents()` function is plug-and-play for live APIs in production.
 
 ### 📁 Project Structure
-em-shield-proto/
-├── app.py               # Main application logic
-├── requirements.txt     # Dependencies
-├── samples/             # Demo bidder documents
-└── README.mdjavascript
+CompilerCrew
+├──gem-shield-proto/
+├ ├──app.py               # Main application logic
+├ ├──requirements.txt     # Dependencies
+├ ├──samples/             # Demo bidder documents
+└ ├──README.md
+
 ### ⚙️ How to Run Locally
 ```bash
 pip install -r requirements.txt
